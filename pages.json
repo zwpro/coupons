@@ -1,0 +1,15 @@
+{
+	"pages": [{
+		"path": "pages/index/index"
+	}],
+	"globalStyle": {
+		"navigationBarTextStyle": "white",
+		"navigationBarTitleText": "外卖专享优惠",
+		"navigationBarBackgroundColor": "#007AFF",
+		"backgroundColor": "#FFFFFF",
+		"titleView": false,
+		"h5": {
+			"titleNView": false
+		}
+	}
+}
