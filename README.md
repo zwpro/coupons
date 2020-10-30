@@ -1,4 +1,4 @@
-# 美团饿了吗CPS红包，别人领红包下单，你拿佣金
+# 美团饿了吗CPS红包，别人领红包下单，你拿推广佣金
 <img src="https://github.com/zwpro/coupons/blob/master/static/demo.png" width="300"/><br/>
 ### 使用方法
 
