@@ -28,23 +28,33 @@ export default {
 			tabs: [
 				{
 					icon: '/static/all.png',
-					text: '全部'
+					text: '全部',
+					tabId: 0,
 				},
 				{
 					icon: '/static/ele.png',
-					text: '饿了么'
+					text: '饿了么',
+					tabId: 1,
 				},
 				{
 					icon: '/static/meituan.png',
-					text: '美团'
+					text: '美团',
+					tabId: 2,
+				},
+				{
+					icon: '/static/11.png',
+					text: '双十一',
+					tabId: 5,
 				},
 				{
 					icon: '/static/jd.png',
-					text: '京东'
+					text: '京东',
+					tabId: 3,
 				},
 				{
 					icon: '/static/vip.png',
-					text: 'VIP会员'
+					text: 'VIP会员',
+					tabId: 4,
 				}
 			],
 			couponList: [],
@@ -89,13 +99,25 @@ export default {
 					type: 1,
 					tabId: 1
 				},
+				{
+					name: '抽红包立减',
+					icon: '/static/11.png',
+					bannerPic: '/static/coupon/11.jpg',
+					url:'https://s.click.taobao.com/Gcs9vuu',
+					type: 2,
+					tabId: 5
+				},
 			]
 		};
 	},
 	onLoad() {
 		let tabId = this.$route.query.tabId ? parseInt(this.$route.query.tabId) : 0
-		this.current = tabId
-		this.changeTab(tabId)
+		for(let i in this.tabs){
+			if(tabId == this.tabs[i].tabId){
+				this.current = parseInt(i)
+			}
+		}
+		this.changeTab(this.current)
 	},
 	methods: {
 		changeTab(index) {
@@ -108,7 +130,7 @@ export default {
 				this.couponList = this.coupons
 			}else{
 				for(let i in this.coupons){
-					if(this.coupons[i].tabId == index){
+					if(this.coupons[i].tabId == this.tabs[index].tabId){
 						this.couponList.push(this.coupons[i])
 					}
 				}
