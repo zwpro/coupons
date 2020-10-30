@@ -1,5 +1,5 @@
 # 美团饿了吗CPS红包，别人领红包下单，你拿佣金
-
+<img src="https://github.com/zwpro/coupons/blob/master/static/demo.png" width="300"/><br/>
 ### 使用方法
 
 源码为uniapp项目，需使用hbuilder打包，可编译成h5或小程序(跳转地址需改为小程序路径)
