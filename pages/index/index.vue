@@ -65,7 +65,11 @@ export default {
 					bannerPic: '/static/coupon/ele_banner.png',
 					url: 'https://s.click.ele.me/frZOjvu',
 					type: 1,
-					tabId: 1
+					tabId: 1,
+					minapp: {
+						appid: 'wxece3a9a4c82f58c9',
+						path: 'pages/sharePid/web/index?scene=https://s.click.ele.me/wR9ecuu'
+					}
 				},
 				{
 					name: '美团外卖红包',
@@ -73,7 +77,11 @@ export default {
 					bannerPic: '/static/coupon/meituan_banner.png',
 					url:'https://runion.meituan.com/url?key=cd23768d09c339d1641b2738df39aa67&url=https%3A%2F%2Fi.meituan.com%2Fawp%2Fhfe%2Fblock%2Fa945391288b790d558b7%2F78716%2Findex.html%3Fappkey%3Dcd23768d09c339d1641b2738df39aa67%3Ajuhe&sid=juhe',
 					type: 1,
-					tabId: 2
+					tabId: 2,
+					minapp: {
+						appid: 'wxde8ac0a21135c07d',
+						path: '/index/pages/h5/h5?weburl=https%3A%2F%2Frunion.meituan.com%2Furl%3Fkey%3D591ec05930c57331c1212b936e6785c1%26url%3Dhttps%253A%252F%252Fi.meituan.com%252Fawp%252Fhfe%252Fblock%252Fa13b87919a9ace9cfab4%252F89400%252Findex.html%253Fappkey%253D591ec05930c57331c1212b936e6785c1%253A000001%26sid%3D000001&lch=cps:waimai:5:591ec05930c57331c1212b936e6785c1:000001&f_token=1&f_userId=1'
+					}
 				},
 				{
 					name: '爱奇艺会员',
@@ -97,7 +105,11 @@ export default {
 					bannerPic: '/static/coupon/ele_guosu.png',
 					url:'https://s.click.ele.me/RpRFhvu',
 					type: 1,
-					tabId: 1
+					tabId: 1,
+					minapp: {
+						appid: 'wxece3a9a4c82f58c9',
+						path: 'pages/sharePid/web/index?scene=https://s.click.ele.me/I4Yacuu'
+					}
 				},
 				{
 					name: '抽红包立减',
@@ -110,14 +122,25 @@ export default {
 			]
 		};
 	},
-	onLoad() {
+	onLoad(e) {
+		//#ifdef H5
 		let tabId = this.$route.query.tabId ? parseInt(this.$route.query.tabId) : 0
+		//#endif
+		//#ifdef MP-WEIXIN
+		let tabId = e.tabId ? parseInt(e.tabId) : 0
+		//#endif
 		for(let i in this.tabs){
 			if(tabId == this.tabs[i].tabId){
 				this.current = parseInt(i)
 			}
 		}
 		this.changeTab(this.current)
+	},
+	onShareAppMessage(res) {
+		return {
+			title: '美团饿了么大额红包，每日可领',
+			path: '/pages/index/index'
+		}
 	},
 	methods: {
 		changeTab(index) {
@@ -135,16 +158,33 @@ export default {
 					}
 				}
 			}
+			//#ifdef H5
 			this.$nextTick(() => {
 				this.$refs.coupon.scrollTop= 0;
 			})
+			//#endif
 			setTimeout(() => {
 				uni.hideLoading()
 			}, 500)
 		},
 		toCoupon(i){
-			console.log(this.couponList[i].url)
+			console.log(this.couponList[i])
+			//h5
+			//#ifdef H5
 			window.location.href = this.couponList[i].url
+			//#endif
+			//微信小程序
+			//#ifdef MP-WEIXIN
+			if(this.couponList[i].minapp){
+				wx.navigateToMiniProgram({
+				  appId: this.couponList[i].minapp.appid,
+				  path: this.couponList[i].minapp.path,
+				  success(res) {
+					// 打开成功
+				  }
+				})
+			}
+			//#endif
 		}
 	}
 };

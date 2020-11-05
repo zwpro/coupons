@@ -298,6 +298,9 @@ export default {
   display: flex;
   align-items: center;
   background-color: #ffffff;
+  scroll-view{
+	  width: 750rpx;
+  }
   &__container {
     min-width: 100%;
     position: relative;
