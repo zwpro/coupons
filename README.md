@@ -1,5 +1,7 @@
 # 美团饿了吗CPS红包，别人领红包下单，你拿推广佣金
-<img src="https://github.com/zwpro/coupons/blob/master/static/demo.png" width="300"/><br/>
+<img src="https://raw.githubusercontent.com/zwpro/coupons/master/static/demo.png" width="300"/>
+
+
 
 ### 使用方法
 
@@ -25,4 +27,18 @@ minapp: {
 }
 ```
 
-如有疑问，请提issue
+已上线案例：
+
+<img src="https://raw.githubusercontent.com/zwpro/coupons/master/examples/微信图片_20201107150908.jpg" width="300"/>
+
+<img src="https://raw.githubusercontent.com/zwpro/coupons/master/examples/微信图片_20201107150917.png" width="300"/>
+
+<img src="https://raw.githubusercontent.com/zwpro/coupons/master/examples/微信图片_20201107150923.jpg" width="300"/>
+
+<img src="https://raw.githubusercontent.com/zwpro/coupons/master/examples/微信图片_20201107150932.jpg" width="300"/>
+
+<img src="https://raw.githubusercontent.com/zwpro/coupons/master/examples/微信图片_20201107150944.jpg" width="300"/>
+
+<img src="https://raw.githubusercontent.com/zwpro/coupons/master/examples/微信图片_20201107150950.jpg" width="300"/>
+
+如有线上案例或疑问，请提issue
