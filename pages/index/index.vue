@@ -137,10 +137,14 @@ export default {
 		this.changeTab(this.current)
 	},
 	onShareAppMessage(res) {
-		return {
-			title: '美团饿了么大额红包，每日可领',
+		var messages = [{
+			title: '美团饿了么大额红包，每日可领！',
 			path: '/pages/index/index'
-		}
+		},{
+			title: '吃了这么多年外卖，你知道这个秘密吗？',
+			path: '/pages/index/index'
+		}];
+		return messages[Math.floor(Math.random()*messages.length)];
 	},
 	methods: {
 		changeTab(index) {
