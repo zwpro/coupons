@@ -1,3 +1,7 @@
+### 更新日志 11-30
+新增uniCloud云开发，小程序数据可通过api更改。
+（如只需要数据写死在前端，可切换到静态数据分支 [no-api](https://github.com/zwpro/coupons/tree/no-api)）
+
 # 美团饿了吗CPS红包，别人领红包下单，你拿推广佣金
 <img src="https://raw.githubusercontent.com/zwpro/coupons/master/static/demo.png" width="300"/>
 
