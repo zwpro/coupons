@@ -25,104 +25,13 @@ export default {
 	data() {
 		return {
 			current: 0,
-			tabs: [
-				{
-					icon: '/static/all.png',
-					text: '全部',
-					tabId: 0,
-				},
-				{
-					icon: '/static/ele.png',
-					text: '饿了么',
-					tabId: 1,
-				},
-				{
-					icon: '/static/meituan.png',
-					text: '美团',
-					tabId: 2,
-				},
-				{
-					icon: '/static/11.png',
-					text: '双十一',
-					tabId: 5,
-				},
-				{
-					icon: '/static/jd.png',
-					text: '京东',
-					tabId: 3,
-				},
-				{
-					icon: '/static/vip.png',
-					text: 'VIP会员',
-					tabId: 4,
-				}
-			],
+			tabs: [],
 			couponList: [],
-			coupons: [
-				{
-					name: '饿了么红包',
-					icon: '/static/coupon/ele.png',
-					bannerPic: '/static/coupon/ele_banner.png',
-					url: 'https://s.click.ele.me/frZOjvu',
-					type: 1,
-					tabId: 1,
-					minapp: {
-						appid: 'wxece3a9a4c82f58c9',
-						path: 'pages/sharePid/web/index?scene=https://s.click.ele.me/wR9ecuu'
-					}
-				},
-				{
-					name: '美团外卖红包',
-					icon: '/static/coupon/meituan.png',
-					bannerPic: '/static/coupon/meituan_banner.png',
-					url:'https://runion.meituan.com/url?key=cd23768d09c339d1641b2738df39aa67&url=https%3A%2F%2Fi.meituan.com%2Fawp%2Fhfe%2Fblock%2Fa945391288b790d558b7%2F78716%2Findex.html%3Fappkey%3Dcd23768d09c339d1641b2738df39aa67%3Ajuhe&sid=juhe',
-					type: 1,
-					tabId: 2,
-					minapp: {
-						appid: 'wxde8ac0a21135c07d',
-						path: '/index/pages/h5/h5?weburl=https%3A%2F%2Frunion.meituan.com%2Furl%3Fkey%3D591ec05930c57331c1212b936e6785c1%26url%3Dhttps%253A%252F%252Fi.meituan.com%252Fawp%252Fhfe%252Fblock%252Fa13b87919a9ace9cfab4%252F89400%252Findex.html%253Fappkey%253D591ec05930c57331c1212b936e6785c1%253A000001%26sid%3D000001&lch=cps:waimai:5:591ec05930c57331c1212b936e6785c1:000001&f_token=1&f_userId=1'
-					}
-				},
-				{
-					name: '爱奇艺会员',
-					icon: '/static/coupon/vip.png',
-					bannerPic: '/static/coupon/vip_banner.png',
-					url:'https://p.pinduoduo.com/VJ7bHo5d',
-					type: 2,
-					tabId: 4
-				},
-				{
-					name: '三只松鼠大礼包',
-					icon: '/static/coupon/jd.png',
-					bannerPic: '/static/coupon/sanzhisongshu.png',
-					url:'https://u.jd.com/tFDejq',
-					type: 0,
-					tabId: 3
-				},
-				{
-					name: '饿了么果蔬',
-					icon: '/static/coupon/ele.png',
-					bannerPic: '/static/coupon/ele_guosu.png',
-					url:'https://s.click.ele.me/RpRFhvu',
-					type: 1,
-					tabId: 1,
-					minapp: {
-						appid: 'wxece3a9a4c82f58c9',
-						path: 'pages/sharePid/web/index?scene=https://s.click.ele.me/I4Yacuu'
-					}
-				},
-				{
-					name: '抽红包立减',
-					icon: '/static/11.png',
-					bannerPic: '/static/coupon/11.jpg',
-					url:'https://s.click.taobao.com/Gcs9vuu',
-					type: 2,
-					tabId: 5
-				},
-			]
+			coupons: []
 		};
 	},
 	onLoad(e) {
+		this.getHome()
 		//#ifdef H5
 		let tabId = this.$route.query.tabId ? parseInt(this.$route.query.tabId) : 0
 		//#endif
@@ -142,6 +51,27 @@ export default {
 			path: '/pages/index/index'
 		},{
 			title: '吃了这么多年外卖，你知道这个秘密吗？',
+			path: '/pages/index/index'
+		},{
+			title: '这样点外卖，一年省下一个亿',
+			path: '/pages/index/index'
+		},{
+			title: '点外卖前先领券，吃霸王餐',
+			path: '/pages/index/index'
+		},{
+			title: '美团饿了么内部优惠券，手慢无',
+			path: '/pages/index/index'
+		},{
+			title: '点外卖不用优惠券，你就out了',
+			path: '/pages/index/index'
+		},{
+			title: '外卖不为人知的秘密，点这解密',
+			path: '/pages/index/index'
+		},{
+			title: '震惊！小伙点外卖竟然花了1分钱',
+			path: '/pages/index/index'
+		},{
+			title: '从这点外卖，你也可以吃霸王餐',
 			path: '/pages/index/index'
 		}];
 		return messages[Math.floor(Math.random()*messages.length)];
@@ -189,6 +119,16 @@ export default {
 				})
 			}
 			//#endif
+		},
+		getHome(){
+			uni.request({
+			    url: getApp().globalData.api.home,
+			    success: (res) => {
+			        this.tabs = res.data.data.tabs
+					this.coupons = res.data.data.coupons
+					this.changeTab(0)
+			    }
+			});
 		}
 	}
 };
@@ -210,6 +150,7 @@ page {
 	}
 	.coupon {
 		padding-top: 200rpx;
+		padding-bottom: 10rpx;
 		.item {
 			background-color: #ffffff;
 			margin: 30rpx;
