@@ -1,0 +1,88 @@
+// 在本文件中可配置云数据库初始化，数据格式见：https://uniapp.dcloud.io/uniCloud/cf-database?id=db_init
+
+// 编写完毕后对本文件点右键，可按配置规则创建表和添加数据
+
+{
+	"coupon": { // 集合（表名）
+		"data": [ // 数据
+			{
+				"name": "饿了么红包",
+				"icon": "/static/coupon/ele.png",
+				"bannerPic": "/static/coupon/ele_banner.png",
+				"url": "https://s.click.ele.me/frZOjvu",
+				"type": 1,
+				"tabId": 1,
+				"minapp": {
+					"appid": "wxece3a9a4c82f58c9",
+					"path": "pages/sharePid/web/index?scene=https://s.click.ele.me/wR9ecuu"
+				}
+			},
+			{
+				"name": "美团外卖红包",
+				"icon": "/static/coupon/meituan.png",
+				"bannerPic": "/static/coupon/meituan_banner.png",
+				"url": "https://runion.meituan.com/url?key=cd23768d09c339d1641b2738df39aa67&url=https%3A%2F%2Fi.meituan.com%2Fawp%2Fhfe%2Fblock%2Fa945391288b790d558b7%2F78716%2Findex.html%3Fappkey%3Dcd23768d09c339d1641b2738df39aa67%3Ajuhe&sid=juhe",
+				"type": 1,
+				"tabId": 2,
+				"minapp": {
+					"appid": "wxde8ac0a21135c07d",
+					"path": "/index/pages/h5/h5?weburl=https%3A%2F%2Frunion.meituan.com%2Furl%3Fkey%3D591ec05930c57331c1212b936e6785c1%26url%3Dhttps%253A%252F%252Fi.meituan.com%252Fawp%252Fhfe%252Fblock%252Fa13b87919a9ace9cfab4%252F89400%252Findex.html%253Fappkey%253D591ec05930c57331c1212b936e6785c1%253A000001%26sid%3D000001&lch=cps:waimai:5:591ec05930c57331c1212b936e6785c1:000001&f_token=1&f_userId=1"
+				}
+			},
+			{
+				"name": "三只松鼠大礼包",
+				"icon": "/static/coupon/jd.png",
+				"bannerPic": "/static/coupon/sanzhisongshu.png",
+				"url":"https://u.jd.com/tFDejq",
+				"type": 0,
+				"tabId": 3,
+				"minapp": {
+					"appid": "wx91d27dbf599dff74",
+					"path": "pages/proxy/union/union"
+				}
+			}
+		],
+		"schema": {
+			"bsonType": "object",
+			"permission": {
+				".read": true,
+				".create": false,
+				".update": false,
+				".delete": false
+			}
+		}
+	},
+	"tab": { // 集合（表名）
+		"data": [ // 数据
+			{
+				"icon": "/static/all.png",
+				"text": "全部",
+				"tabId": 0
+			},
+			{
+				"icon": "/static/ele.png",
+				"text": "饿了么",
+				"tabId": 1
+			},
+			{
+				"icon": "/static/meituan.png",
+				"text": "美团",
+				"tabId": 2
+			},
+			{
+				"icon": "/static/jd.png",
+				"text": "京东",
+				"tabId": 3
+			}
+		],
+		"schema": {
+			"bsonType": "object",
+			"permission": {
+				".read": true,
+				".create": false,
+				".update": false,
+				".delete": false
+			}
+		}
+	}
+}
