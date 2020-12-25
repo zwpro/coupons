@@ -1,6 +1,7 @@
 'use strict';
 const response = require('response')
 const homeModel = require('./models/home')
+const getOpenId = require('./models/openid')
 exports.main = async (event, context) => {
 	//event为客户端上传的参数
 	console.log('event : ', event)
@@ -13,6 +14,11 @@ exports.main = async (event, context) => {
 			resp.tabs = homeModelTabs.data
 			var homeModelCoupons = await homeModel.coupons()
 			resp.coupons = homeModelCoupons.data
+			return response.success(resp)
+			break;
+		case '/openid':
+			var openid = await getOpenId(event.queryStringParameters.jsCode)
+			resp.openid = openid
 			return response.success(resp)
 			break;
 		default:

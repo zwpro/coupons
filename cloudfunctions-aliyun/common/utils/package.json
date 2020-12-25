@@ -1,5 +1,5 @@
 {
-  "name": "api",
+  "name": "utils",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,9 +8,5 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "response": "file:../common/response",
-	"utils": "file:../common/utils"
-  }
+  "license": "ISC"
 }
