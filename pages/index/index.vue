@@ -27,7 +27,8 @@ export default {
 			current: 0,
 			tabs: [],
 			couponList: [],
-			coupons: []
+			coupons: [],
+			openid: ''
 		};
 	},
 	onLoad(e) {
@@ -37,6 +38,7 @@ export default {
 		//#endif
 		//#ifdef MP-WEIXIN
 		let tabId = e.tabId ? parseInt(e.tabId) : 0
+		this.onSubscribe();
 		//#endif
 		for(let i in this.tabs){
 			if(tabId == this.tabs[i].tabId){
@@ -77,6 +79,90 @@ export default {
 		return messages[Math.floor(Math.random()*messages.length)];
 	},
 	methods: {
+		onSubscribe() {
+			uni.login({
+				success: function(res) {
+					if (res.code) {
+						uni.getUserInfo({
+							success: function(res)  {
+								console.log('存在code');
+							}
+						});
+						uni.request({
+						    url: getApp().globalData.api.openid,
+							data:{
+								jsCode: res.code
+							},
+						    success: (res) => {
+								console.log(res.data);
+						        const openid = res.data.data.openid;
+								uni.showModal({
+								    title: '订阅提示',
+								    content: '点击一下订阅，避免错过一个亿!',
+									cancelText: '不差钱',
+									cancelColor: '#BEBEBE',
+									confirmText: '订阅',
+									confirmColor: '#007AFF',
+								    success: function (res) {
+								        if (res.confirm) {
+								            console.log('订阅开始')
+											// 活动开始提醒 模板
+								            const lessonTmplId = 'hLV31-w38lq0yq8p6GEQUtBU7brtMrCFmaCCyxbU4xI';
+											const data = {
+								            		data: '外卖领券提醒, 快来领优惠券啦！',
+								            		templateId: lessonTmplId,
+								            		openid: openid,
+								            		  };
+								            console.log(data)
+								            uni.showLoading({
+								              title: '订阅中...',
+								            });
+											setTimeout(function () {
+											    uni.hideLoading();
+											}, 15000);
+								            // 调用微信 API 申请发送订阅消息
+								            wx.requestSubscribeMessage({
+								            	// 传入订阅消息的模板id，模板 id 可在小程序管理后台申请
+								            	tmplIds: [lessonTmplId],
+								            	success(res) {
+								            	  // 申请订阅成功
+								            	  if (res.errMsg === 'requestSubscribeMessage:ok') {
+								            		uni.request({
+								            		  url: getApp().globalData.subscribe,
+								            		  data: data,
+								            		  success: (res) => {
+								            			  wx.showToast({
+								            				title: '订阅完成',
+								            				icon: 'success',
+								            				duration: 2000,
+								            			  });
+								            			},
+								            		  fail(res) {
+								            			console.log(res)
+								            			wx.showToast({
+								            			  title: '订阅失败',
+								            			  icon: 'error',
+								            			  duration: 2000,
+								            			});
+								            		  }
+								            		});
+								            	  }
+								            	},
+								            	
+								            });
+								        } else if (res.cancel) {
+								            console.log('用户点击取消');
+								        }
+								    }
+								});
+						    }
+						});	
+					} else {
+						console.log('获取用户登录态失败！' + res.errMsg);
+					}
+				}
+			});
+		},
 		changeTab(index) {
 			console.log('当前选中的项：' + index);
 			this.couponList = []

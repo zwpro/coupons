@@ -1,3 +1,10 @@
+### 更新日志 12.26
+
+新增订阅功能
+
+修改 cloudfunctions-aliyun/common/utils/index.js 中的 appid和secret参数，上传代码到云服务器即可
+
+
 ### 更新日志 11-30
 新增uniCloud云开发，小程序数据可通过api更改。
 （如只需要数据写死在前端，可切换到静态数据分支 [no-api](https://github.com/zwpro/coupons/tree/no-api)）
