@@ -1,6 +1,6 @@
 ### 更新日志 12.26
 
-新增订阅功能，位于分支subscribe
+新增订阅功能
 
 修改 cloudfunctions-aliyun/common/utils/index.js 中的 appid和secret参数，上传代码到云服务器即可
 
