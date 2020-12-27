@@ -6,7 +6,7 @@ var home = {
 		return tabs
 	},
 	coupons: () => {
-		let coupons = db.collection('coupon').get();
+		let coupons = db.collection('coupon').orderBy("sort", "desc").get();
 		return coupons
 	},
 }
