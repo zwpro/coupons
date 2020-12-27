@@ -1,6 +1,6 @@
 {
-    "name" : "惠吃会喝",
-    "appid" : "__UNI__B7F4003",
+    "name" : "外卖专享优惠",
+    "appid" : "",
     "description" : "",
     "versionName" : "1.0.0",
     "versionCode" : "100",
@@ -42,7 +42,7 @@
     },
     "quickapp" : {},
     "mp-weixin" : {
-        "appid" : "wx9472d5ad54e879ed",
+        "appid" : "",
         "setting" : {
             "urlCheck" : true,
             "minified" : true
