@@ -15,7 +15,10 @@ export default {
 			openid: 'https://88d58ce0-c72d-4ad5-9ad5-5196f032ef71.bspapp.com/http/api/openid',
 		},
 		subscribe: 'https://88d58ce0-c72d-4ad5-9ad5-5196f032ef71.bspapp.com/http/subscribe',
-	}
+		openid: '',
+	},
+
+	
 
 };
 </script>
