@@ -88,15 +88,37 @@
             }
         ]
     },
-    "tab": {
-        "schema": {
-            "bsonType": "object",
-            "permission": {
-                ".create": false,
-                ".delete": false,
-                ".read": true,
-                ".update": false
-            }
-        }
-    }
+	"tab": { // 集合（表名）
+		"data": [ // 数据
+			{
+				"icon": "/static/all.png",
+				"text": "全部",
+				"tabId": 0
+			},
+			{
+				"icon": "/static/ele.png",
+				"text": "饿了么",
+				"tabId": 1
+			},
+			{
+				"icon": "/static/meituan.png",
+				"text": "美团",
+				"tabId": 2
+			},
+			{
+				"icon": "/static/jd.png",
+				"text": "京东",
+				"tabId": 3
+			}
+		],
+		"schema": {
+			"bsonType": "object",
+			"permission": {
+				".read": true,
+				".create": false,
+				".update": false,
+				".delete": false
+			}
+		}
+	}
 }

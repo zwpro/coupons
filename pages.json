@@ -1,7 +1,32 @@
 {
 	"pages": [{
 		"path": "pages/index/index"
+	}, {
+		"path": "pages/user/user",
+		"style": {
+			"navigationBarTitleText": "我的",
+			"enablePullDownRefresh": false
+		}
+
 	}],
+	"tabBar": {
+		"backgroundColor": "#F7F7FA",
+		"color": "#707070",
+		"selectedColor": "#ffad00",
+		"list": [{
+				"pagePath": "pages/index/index",
+				"text": "首页",
+				"iconPath": "/static/tabbar/home.png",
+				"selectedIconPath": "/static/tabbar/home_fill.png"
+			},
+			{
+				"pagePath": "pages/user/user",
+				"text": "我的",
+				"iconPath": "/static/tabbar/user.png",
+				"selectedIconPath": "/static/tabbar/user_fill.png"
+			}
+		]
+	},
 	"globalStyle": {
 		"navigationBarTextStyle": "white",
 		"navigationBarTitleText": "外卖专享优惠",

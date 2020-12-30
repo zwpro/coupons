@@ -50,35 +50,7 @@ export default {
 		this.changeTab(this.current)
 	},
 	onShareAppMessage(res) {
-		var messages = [{
-			title: '美团饿了么大额红包，每日可领！',
-			path: '/pages/index/index'
-		},{
-			title: '吃了这么多年外卖，你知道这个秘密吗？',
-			path: '/pages/index/index'
-		},{
-			title: '这样点外卖，一年省下一个亿',
-			path: '/pages/index/index'
-		},{
-			title: '点外卖前先领券，吃霸王餐',
-			path: '/pages/index/index'
-		},{
-			title: '美团饿了么内部优惠券，手慢无',
-			path: '/pages/index/index'
-		},{
-			title: '点外卖不用优惠券，你就out了',
-			path: '/pages/index/index'
-		},{
-			title: '外卖不为人知的秘密，点这解密',
-			path: '/pages/index/index'
-		},{
-			title: '震惊！小伙点外卖竟然花了1分钱',
-			path: '/pages/index/index'
-		},{
-			title: '从这点外卖，你也可以吃霸王餐',
-			path: '/pages/index/index'
-		}];
-		return messages[Math.floor(Math.random()*messages.length)];
+		return getApp().shareConfig()
 	},
 	methods: {
 		onSubscribe() {
@@ -105,13 +77,13 @@ export default {
 					            		openid: openid,
 					            		  };
 					            console.log(data)
-					            uni.showLoading({
-					              title: '订阅中...',
-					            });
-								setTimeout(function () {
-								    uni.hideLoading();
-								}, 5000);
-					            // 调用微信 API 申请发送订阅消息
+								// uni.showLoading({
+								// 	title: '订阅中...',
+								// });
+								// setTimeout(function () {
+								//     uni.hideLoading();
+								// }, 2000);
+								// 调用微信 API 申请发送订阅消息
 					            wx.requestSubscribeMessage({
 					            	// 传入订阅消息的模板id，模板 id 可在小程序管理后台申请
 					            	tmplIds: [lessonTmplId],
