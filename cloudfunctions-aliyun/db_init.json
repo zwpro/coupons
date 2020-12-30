@@ -88,8 +88,8 @@
             }
         ]
     },
-	"tab": { // 集合（表名）
-		"data": [ // 数据
+	"tab": {
+		"data": [
 			{
 				"icon": "/static/all.png",
 				"text": "全部",
