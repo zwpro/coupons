@@ -1,3 +1,5 @@
+[新]微信红包封面领取小程序：https://github.com/zwpro/redCover
+
 ### 更新日志 12.26
 
 新增订阅功能
