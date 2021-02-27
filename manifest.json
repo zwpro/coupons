@@ -1,7 +1,7 @@
 {
-    "name" : "外卖专享优惠",
+    "name" : "干饭组",
     "appid" : "",
-    "description" : "",
+    "description" : "英雄不问出处，干饭不问吨数",
     "versionName" : "1.0.0",
     "versionCode" : "100",
     "transformPx" : false,
@@ -42,7 +42,7 @@
     },
     "quickapp" : {},
     "mp-weixin" : {
-        "appid" : "",
+        "appid" : "wxf6d3a6785014c8ad",
         "setting" : {
             "urlCheck" : true
         }

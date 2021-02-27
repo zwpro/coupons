@@ -24,6 +24,8 @@
 export default {
 	data() {
 		return {
+			eleMPAppid: 'wxece3a9a4c82f58c9',
+			eleMPPath: 'taoke/pages/shopping-guide/index?scene=l0MU1ru',
 			current: 0,
 			tabs: [
 				{
@@ -51,11 +53,11 @@ export default {
 					text: '京东',
 					tabId: 3,
 				},
-				{
-					icon: '/static/vip.png',
-					text: 'VIP会员',
-					tabId: 4,
-				}
+				// {
+				// 	icon: '/static/vip.png',
+				// 	text: 'VIP会员',
+				// 	tabId: 4,
+				// }
 			],
 			couponList: [],
 			coupons: [
@@ -63,12 +65,12 @@ export default {
 					name: '饿了么红包',
 					icon: '/static/coupon/ele.png',
 					bannerPic: '/static/coupon/ele_banner.png',
-					url: 'https://s.click.ele.me/frZOjvu',
+					url: 'https://s.click.ele.me/quDa1ru',
 					type: 1,
 					tabId: 1,
 					minapp: {
-						appid: 'wxece3a9a4c82f58c9',
-						path: 'pages/sharePid/web/index?scene=https://s.click.ele.me/wR9ecuu'
+						appid: this.eleMPAppid,
+						path: this.eleMPPath,//'pages/sharePid/web/index?scene=https://s.click.ele.me/quDa1ru'
 					}
 				},
 				{
