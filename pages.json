@@ -1,6 +1,19 @@
 {
 	"pages": [{
-		"path": "pages/index/index"
+	  "path": "pages/index/index",
+	  "style" : {
+		"navigationBarTitleText": "每日外卖红包"
+	  }
+	},{
+	  "path": "pages/shop/shop",
+	  "style" : {
+		"navigationBarTitleText": "干饭推荐"
+	  }
+	},{
+	  "path": "pages/about/about",
+	  "style" : {
+		"navigationBarTitleText": "关于我们"
+	  }
 	}],
   "tabBar": {
 	"color": "#333333",
@@ -9,17 +22,17 @@
 	"list": [{
 	  "pagePath": "pages/index/index",
 	  "text": "干饭",
-	  "iconPath": "static/ele.png",
-	  "selectedIconPath": "static/home.png"
+	  "iconPath": "static/icon/eat.png",
+	  "selectedIconPath": "static/icon/eat_b.png"
 	},{
-	  "pagePath": "pages/index/index",
-	  "iconPath": "static/vip.png",
-	  "selectedIconPath": "static/home.png",
+	  "pagePath": "pages/shop/shop",
+	  "iconPath": "static/icon/shop.png",
+	  "selectedIconPath": "static/icon/shop_b.png",
 	  "text": "推荐"
 	},{
-      "pagePath": "pages/index/index",
-      "iconPath": "static/wx.png",
-      "selectedIconPath": "static/home.png",
+      "pagePath": "pages/about/about",
+      "iconPath": "static/icon/about.png",
+      "selectedIconPath": "static/icon/about_b.png",
       "text": "关于"
     }]
   },
