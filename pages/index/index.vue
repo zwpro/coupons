@@ -14,7 +14,7 @@
 					</view>
 					<view class="right">免费领取</view>
 				</view>
-				<view class="bottom"><image :src="v.bannerPic" mode="widthFix" /></view>
+				<view class="bottom"><image :src="v.bannerPic" class="banner-image" mode="widthFix" /></view>
 			</view>
 		</view>
 	</view>
@@ -24,8 +24,6 @@
 export default {
 	data() {
 		return {
-			eleMPAppid: 'wxece3a9a4c82f58c9',
-			eleMPPath: 'taoke/pages/shopping-guide/index?scene=l0MU1ru',
 			current: 0,
 			tabs: [
 				{
@@ -44,8 +42,8 @@ export default {
 					tabId: 2,
 				},
 				{
-					icon: '/static/11.png',
-					text: '双十一',
+					icon: '/static/tmall.png',
+					text: '天猫',
 					tabId: 5,
 				},
 				{
@@ -64,13 +62,13 @@ export default {
 				{
 					name: '饿了么红包',
 					icon: '/static/coupon/ele.png',
-					bannerPic: '/static/coupon/ele_banner.png',
+					bannerPic: '/static/coupon/elm.jpg',
 					url: 'https://s.click.ele.me/quDa1ru',
 					type: 1,
 					tabId: 1,
 					minapp: {
-						appid: this.eleMPAppid,
-						path: this.eleMPPath,//'pages/sharePid/web/index?scene=https://s.click.ele.me/quDa1ru'
+						appid: 'wxece3a9a4c82f58c9',
+						path: 'taoke/pages/shopping-guide/index?scene=kvnz0ru',
 					}
 				},
 				{
@@ -82,44 +80,8 @@ export default {
 					tabId: 2,
 					minapp: {
 						appid: 'wxde8ac0a21135c07d',
-						path: '/index/pages/h5/h5?weburl=https%3A%2F%2Frunion.meituan.com%2Furl%3Fkey%3D591ec05930c57331c1212b936e6785c1%26url%3Dhttps%253A%252F%252Fi.meituan.com%252Fawp%252Fhfe%252Fblock%252Fa13b87919a9ace9cfab4%252F89400%252Findex.html%253Fappkey%253D591ec05930c57331c1212b936e6785c1%253A000001%26sid%3D000001&lch=cps:waimai:5:591ec05930c57331c1212b936e6785c1:000001&f_token=1&f_userId=1'
+						path: '/index/pages/h5/h5?noshare=1&f_userId=0&f_openId=0&f_token=0&weburl=https%3A%2F%2Fact1.meituan.com%2Fclover%2Fpage%2Fadunioncps%2Fshare_coupon_new%3FutmSource%3D2055%26timestamp%3D1614432427%26utmMedium%3D401f09cc5f627afb3fcc9e46f2ade88d%26version%3D1.0%26showKa%3D1%26requestId%3D97ad06f1617a19415603d95b6cd233eb%26activity%3DOwMkGzn6oK'
 					}
-				},
-				{
-					name: '爱奇艺会员',
-					icon: '/static/coupon/vip.png',
-					bannerPic: '/static/coupon/vip_banner.png',
-					url:'https://p.pinduoduo.com/VJ7bHo5d',
-					type: 2,
-					tabId: 4
-				},
-				{
-					name: '三只松鼠大礼包',
-					icon: '/static/coupon/jd.png',
-					bannerPic: '/static/coupon/sanzhisongshu.png',
-					url:'https://u.jd.com/tFDejq',
-					type: 0,
-					tabId: 3
-				},
-				{
-					name: '饿了么果蔬',
-					icon: '/static/coupon/ele.png',
-					bannerPic: '/static/coupon/ele_guosu.png',
-					url:'https://s.click.ele.me/RpRFhvu',
-					type: 1,
-					tabId: 1,
-					minapp: {
-						appid: 'wxece3a9a4c82f58c9',
-						path: 'pages/sharePid/web/index?scene=https://s.click.ele.me/I4Yacuu'
-					}
-				},
-				{
-					name: '抽红包立减',
-					icon: '/static/11.png',
-					bannerPic: '/static/coupon/11.jpg',
-					url:'https://s.click.taobao.com/Gcs9vuu',
-					type: 2,
-					tabId: 5
 				},
 			]
 		};
@@ -279,6 +241,9 @@ page {
 					width: 100%;
 					height: auto;
 				}
+			}
+			.banner-image {
+				border-radius: 20rpx;
 			}
 		}
 	}
