@@ -2,6 +2,8 @@
 	"pages": [{
 	  "path": "pages/index/index",
 	  "style" : {
+		"navigationStyle": "custom",
+		"navigationBarTextStyle": "white",
 		"navigationBarTitleText": "干饭组"
 	  }
 	},{

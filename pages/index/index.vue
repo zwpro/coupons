@@ -1,6 +1,9 @@
 <template>
 	<view class="container">
-		<v-tabs v-model="current" :tabs="tabs" @change="changeTab" class="tab"></v-tabs>
+		<view class="header">
+			<image src="../../static/basicprofile.png" mode=""></image>
+		</view>
+		<!-- <v-tabs v-model="current" :tabs="tabs" @change="changeTab" class="tab"></v-tabs> -->
 		<view class="coupon" ref="coupon">
 			<view class="item" v-for="(v, i) in couponList" @click="toCoupon(i)" :key="i">
 				<view class="top">
@@ -173,7 +176,7 @@ page {
 		z-index: 9999;
 	}
 	.coupon {
-		padding-top: 200rpx;
+		// padding-top: 200rpx;
 		.item {
 			background-color: #ffffff;
 			margin: 30rpx;
