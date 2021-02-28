@@ -74,7 +74,7 @@ export default {
 				{
 					name: '美团外卖红包',
 					icon: '/static/coupon/meituan.png',
-					bannerPic: '/static/coupon/meituan_banner.png',
+					bannerPic: '/static/coupon/meituan.jpg',
 					url:'https://runion.meituan.com/url?key=cd23768d09c339d1641b2738df39aa67&url=https%3A%2F%2Fi.meituan.com%2Fawp%2Fhfe%2Fblock%2Fa945391288b790d558b7%2F78716%2Findex.html%3Fappkey%3Dcd23768d09c339d1641b2738df39aa67%3Ajuhe&sid=juhe',
 					type: 1,
 					tabId: 2,

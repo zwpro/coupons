@@ -9,10 +9,10 @@
 							<image :src="v.icon" class="icon" mode="widthFix" />
 							<view class="name">{{ v.name }}</view>
 						</view>
-						<view class="text" v-if="v.type == 1">天天可领</view>
+						<view class="text" v-if="v.type == 1">每日可领</view>
 						<view class="text" v-else-if="v.type == 2">限时秒杀</view>
 					</view>
-					<view class="right">免费领取</view>
+					<view class="right">立即领取</view>
 				</view>
 				<view class="bottom"><image :src="v.bannerPic" class="banner-image" mode="widthFix" /></view>
 			</view>
@@ -27,30 +27,30 @@ export default {
 			current: 0,
 			tabs: [
 				{
-					icon: '/static/all.png',
+					// icon: '/static/all.png',
 					text: '全部',
 					tabId: 0,
 				},
 				{
-					icon: '/static/ele.png',
+					// icon: '/static/ele.png',
 					text: '饿了么',
 					tabId: 1,
 				},
 				{
-					icon: '/static/meituan.png',
+					// icon: '/static/meituan.png',
 					text: '美团',
 					tabId: 2,
 				},
-				{
-					icon: '/static/tmall.png',
-					text: '天猫',
-					tabId: 5,
-				},
-				{
-					icon: '/static/jd.png',
-					text: '京东',
-					tabId: 3,
-				},
+				// {
+				// 	icon: '/static/tmall.png',
+				// 	text: '天猫',
+				// 	tabId: 5,
+				// },
+				// {
+				// 	icon: '/static/jd.png',
+				// 	text: '京东',
+				// 	tabId: 3,
+				// },
 				// {
 				// 	icon: '/static/vip.png',
 				// 	text: 'VIP会员',
@@ -74,7 +74,7 @@ export default {
 				{
 					name: '美团外卖红包',
 					icon: '/static/coupon/meituan.png',
-					bannerPic: '/static/coupon/meituan_banner.png',
+					bannerPic: '/static/coupon/meituan.jpg',
 					url:'https://runion.meituan.com/url?key=cd23768d09c339d1641b2738df39aa67&url=https%3A%2F%2Fi.meituan.com%2Fawp%2Fhfe%2Fblock%2Fa945391288b790d558b7%2F78716%2Findex.html%3Fappkey%3Dcd23768d09c339d1641b2738df39aa67%3Ajuhe&sid=juhe',
 					type: 1,
 					tabId: 2,
@@ -196,7 +196,7 @@ page {
 					.icon {
 						display: inline-block;
 						vertical-align: bottom;
-						width: 52rpx;
+						width: 44rpx;
 						height: auto;
 					}
 					.name {
@@ -225,8 +225,8 @@ page {
 					width: 170rpx;
 					height: 60rpx;
 					border-radius: 30rpx;
-					background: linear-gradient(90deg, #ec6f43, #ea4a36);
-					color: #fff;
+					background: linear-gradient(90deg, #4c4c4c, #988787);
+					color: #e6d874;
 					font-size: 28rpx;
 					line-height: 60rpx;
 					text-align: center;

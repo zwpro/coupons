@@ -2,7 +2,7 @@
 	"pages": [{
 	  "path": "pages/index/index",
 	  "style" : {
-		"navigationBarTitleText": "每日外卖红包"
+		"navigationBarTitleText": "干饭组"
 	  }
 	},{
 	  "path": "pages/shop/shop",
@@ -37,9 +37,9 @@
     }]
   },
 	"globalStyle": {
-		"navigationBarTitleText": "每日外卖红包",
+		"navigationBarTitleText": "干饭组",
 		"navigationBarTextStyle": "black",
-		"navigationBarBackgroundColor": "#00A6FC",
+		"navigationBarBackgroundColor": "#FFFFFF",
 		"backgroundColor": "#F8F8F8",
 		"titleView": false,
 		"h5": {

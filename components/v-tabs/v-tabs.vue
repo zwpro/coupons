@@ -1,4 +1,5 @@
 <template>
+
   <view :id="elId" class="v-tabs">
     <scroll-view
       :scroll-x="scroll"
@@ -111,11 +112,11 @@ export default {
     },
     color: {
       type: String,
-      default: '#333'
+      default: '#6F6F6F'
     },
     activeColor: {
       type: String,
-      default: '#2979ff'
+      default: '#272727'
     },
     fontSize: {
       type: String,
@@ -139,7 +140,7 @@ export default {
     },
     lineColor: {
       type: String,
-      default: '#2979ff'
+      default: '#6F6F6F'
     },
     lineHeight: {
       type: String,
