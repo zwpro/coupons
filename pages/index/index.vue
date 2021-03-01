@@ -1,10 +1,25 @@
 <template>
-	<view class="container">
-		<view class="header">
-			<image src="../../static/basicprofile.png" mode=""></image>
-		</view>
-		<!-- <v-tabs v-model="current" :tabs="tabs" @change="changeTab" class="tab"></v-tabs> -->
-		<view class="coupon" ref="coupon">
+  <view class="container">
+    <!--  关注  -->
+    <!-- #ifdef MP-WEIXIN -->
+    <aTip isCustom="true" bgColor="#575555" borderR="5"></aTip>
+    <!-- #endif -->
+
+    <!--  header  -->
+    <view class="header-container">
+      <view class="header">
+        <view class="title">干饭组</view>
+      </view>
+      <view class="banner">
+        <image src="/static/banner/banner2.jpg" mode="widthFix" />
+      </view>
+      <view class="header-button">
+        <image src="/static/xiaomai1_min.jpg" mode="widthFix" @click="followNotice" />
+      </view>
+    </view>
+
+    <!--  内容  -->
+    <view class="coupon" ref="coupon">
 			<view class="item" v-for="(v, i) in couponList" @click="toCoupon(i)" :key="i">
 				<view class="top">
 					<view class="left">
@@ -20,46 +35,20 @@
 				<view class="bottom"><image :src="v.bannerPic" class="banner-image" mode="widthFix" /></view>
 			</view>
 		</view>
+
+    <!--  关于  -->
+    <view>
+
+    </view>
 	</view>
 </template>
 
 <script>
+import aTip from "@/components/a_tip/aTip";
 export default {
 	data() {
 		return {
 			current: 0,
-			tabs: [
-				{
-					// icon: '/static/all.png',
-					text: '全部',
-					tabId: 0,
-				},
-				{
-					// icon: '/static/ele.png',
-					text: '饿了么',
-					tabId: 1,
-				},
-				{
-					// icon: '/static/meituan.png',
-					text: '美团',
-					tabId: 2,
-				},
-				// {
-				// 	icon: '/static/tmall.png',
-				// 	text: '天猫',
-				// 	tabId: 5,
-				// },
-				// {
-				// 	icon: '/static/jd.png',
-				// 	text: '京东',
-				// 	tabId: 3,
-				// },
-				// {
-				// 	icon: '/static/vip.png',
-				// 	text: 'VIP会员',
-				// 	tabId: 4,
-				// }
-			],
 			couponList: [],
 			coupons: [
 				{
@@ -68,7 +57,6 @@ export default {
 					bannerPic: '/static/coupon/elm.jpg',
 					url: 'https://s.click.ele.me/quDa1ru',
 					type: 1,
-					tabId: 1,
 					minapp: {
 						appid: 'wxece3a9a4c82f58c9',
 						path: 'taoke/pages/shopping-guide/index?scene=kvnz0ru',
@@ -78,57 +66,39 @@ export default {
 					name: '美团外卖红包',
 					icon: '/static/coupon/meituan.png',
 					bannerPic: '/static/coupon/meituan.jpg',
-					url:'https://runion.meituan.com/url?key=cd23768d09c339d1641b2738df39aa67&url=https%3A%2F%2Fi.meituan.com%2Fawp%2Fhfe%2Fblock%2Fa945391288b790d558b7%2F78716%2Findex.html%3Fappkey%3Dcd23768d09c339d1641b2738df39aa67%3Ajuhe&sid=juhe',
+					url:'https://c.mktdatatech.com/track.php?site_id=448253&aid=4882&euid=&t=http%3A%2F%2Ffxno-act.meituan.com&dm_fid=16052',
 					type: 1,
-					tabId: 2,
 					minapp: {
 						appid: 'wxde8ac0a21135c07d',
-						path: '/index/pages/h5/h5?noshare=1&f_userId=0&f_openId=0&f_token=0&weburl=https%3A%2F%2Fact1.meituan.com%2Fclover%2Fpage%2Fadunioncps%2Fshare_coupon_new%3FutmSource%3D2055%26timestamp%3D1614432427%26utmMedium%3D401f09cc5f627afb3fcc9e46f2ade88d%26version%3D1.0%26showKa%3D1%26requestId%3D97ad06f1617a19415603d95b6cd233eb%26activity%3DOwMkGzn6oK'
+						path: '/index/pages/h5/h5?noshare=1&f_userId=0&f_openId=0&f_token=0&weburl=https%3A%2F%2Fact1.meituan.com%2Fclover%2Fpage%2Fadunioncps%2Fshare_coupon_new%3FutmSource%3D2055%26timestamp%3D1614563319%26utmMedium%3Debc6a044eac83d191076889a014dfe80%26version%3D1.0%26showKa%3D1%26requestId%3D26d32a5394637e865bbb712b2b1cbf9e%26activity%3DOwMkGzn6oK'
 					}
 				},
 			]
 		};
 	},
+  components: {
+    aTip,
+  },
 	onLoad(e) {
-		//#ifdef H5
-		let tabId = this.$route.query.tabId ? parseInt(this.$route.query.tabId) : 0
-		//#endif
-		//#ifdef MP-WEIXIN
-		let tabId = e.tabId ? parseInt(e.tabId) : 0
-		//#endif
-		for(let i in this.tabs){
-			if(tabId == this.tabs[i].tabId){
-				this.current = parseInt(i)
-			}
-		}
-		this.changeTab(this.current)
+		this.changeTab()
 	},
 	onShareAppMessage(res) {
-		var messages = [{
-			title: '美团饿了么大额红包，每日可领！',
+		let messages = [{
+			title: '干饭人,干饭魂,干饭人吃饭得用盆!',
 			path: '/pages/index/index'
 		},{
-			title: '吃了这么多年外卖，你知道这个秘密吗？',
+			title: '干饭人胃口大，一张小嘴吃天下!',
 			path: '/pages/index/index'
 		}];
 		return messages[Math.floor(Math.random()*messages.length)];
 	},
 	methods: {
-		changeTab(index) {
-			console.log('当前选中的项：' + index);
-			this.couponList = []
+		changeTab() {
 			uni.showLoading({
 			    title: '获取优惠中'
 			});
-			if(index == 0){
-				this.couponList = this.coupons
-			}else{
-				for(let i in this.coupons){
-					if(this.coupons[i].tabId == this.tabs[index].tabId){
-						this.couponList.push(this.coupons[i])
-					}
-				}
-			}
+      this.couponList = this.coupons
+
 			//#ifdef H5
 			this.$nextTick(() => {
 				this.$refs.coupon.scrollTop= 0;
@@ -138,7 +108,7 @@ export default {
 				uni.hideLoading()
 			}, 500)
 		},
-		toCoupon(i){
+		toCoupon(i) {
 			console.log(this.couponList[i])
 			//h5
 			//#ifdef H5
@@ -156,7 +126,10 @@ export default {
 				})
 			}
 			//#endif
-		}
+		},
+    followNotice() {
+		  this.changeTab()
+    }
 	}
 };
 </script>
@@ -165,6 +138,36 @@ export default {
 page {
 	background-color: #f8f8f8;
 }
+
+.header-container {
+  background: #fff;
+  .header {
+    //background-color: #F46845;
+    background: linear-gradient(#F46845, #fa856b);
+    height: 380rpx;
+    text-align: center;
+    line-height: 230rpx;
+    color: #fff;
+    font-size: 16px;
+  }
+
+  .banner {
+    text-align: center;
+    margin-top: -200rpx;
+    image {
+      width: 92%;
+      border-radius: 25px;
+    }
+  }
+  .header-button {
+    text-align: center;
+    image {
+      width: 20%;
+      border-radius: 25px;
+    }
+  }
+}
+
 .container {
 	font-size: 14px;
 	line-height: 24px;

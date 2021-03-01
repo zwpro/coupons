@@ -4,7 +4,7 @@
 	  "style" : {
 		"navigationStyle": "custom",
 		"navigationBarTextStyle": "white",
-		"navigationBarTitleText": "干饭组"
+		"navigationBarTitleText": "我要干饭"
 	  }
 	},{
 	  "path": "pages/shop/shop",
