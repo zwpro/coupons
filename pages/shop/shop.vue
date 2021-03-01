@@ -2,7 +2,7 @@
   <view class="uni-product-list">
     <view class="uni-product" v-for="(product,index) in productList" :key="index" @click="toShop(index)">
       <view class="image-view">
-        <image v-if="renderImage" class="uni-product-image" :src="product.image"></image>
+        <image v-if="renderImage" class="uni-product-image" :src="product.image" lazy-load @load="onoff='1'"></image>
       </view>
       <view class="uni-product-title">{{product.title}}</view>
       <view class="uni-product-price">

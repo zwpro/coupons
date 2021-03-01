@@ -5,7 +5,7 @@
     <view class="header-container">
       <view class="header">
         <view class="logo-img">
-          <image src="/static/logo.jpg" mode="widthFix" />
+          <image src="/static/logo.jpg" mode="widthFix" lazy-load @load="onoff='1'" />
         </view>
       </view>
       <view class="title">干饭组 v1.0.0</view>

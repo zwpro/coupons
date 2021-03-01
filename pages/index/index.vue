@@ -11,10 +11,10 @@
         <view class="title">干饭组</view>
       </view>
       <view class="banner">
-        <image src="/static/banner/banner2.jpg" mode="widthFix" />
+        <image src="/static/banner/banner2.jpg" mode="widthFix" lazy-load @load="onoff='1'" />
       </view>
       <view class="header-button">
-        <image src="/static/xiaomai1_min.jpg" mode="widthFix" @click="followNotice" />
+        <image src="/static/xiaomai1_min.jpg" mode="widthFix" lazy-load @load="onoff='1'" @click="followNotice" />
       </view>
     </view>
 
@@ -24,7 +24,7 @@
 				<view class="top">
 					<view class="left">
 						<view class="content">
-							<image :src="v.icon" class="icon" mode="widthFix" />
+							<image :src="v.icon" class="icon" mode="widthFix" lazy-load @load="onoff='1'" />
 							<view class="name">{{ v.name }}</view>
 						</view>
 <!--						<view class="text" v-if="v.type == 1">每日可领</view>-->
@@ -32,7 +32,7 @@
 					</view>
 					<view class="right">立即领取</view>
 				</view>
-				<view class="bottom"><image :src="v.bannerPic" class="banner-image" mode="widthFix" /></view>
+				<view class="bottom"><image :src="v.bannerPic" class="banner-image" mode="widthFix" lazy-load @load="onoff='1'" /></view>
 			</view>
 		</view>
 
