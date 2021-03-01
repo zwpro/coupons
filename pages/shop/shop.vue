@@ -1,262 +1,158 @@
 <template>
-	<view class="container">
-		<v-tabs v-model="current" :tabs="tabs" @change="changeTab" class="tab"></v-tabs>
-		<view class="coupon" ref="coupon">
-			<view class="item" v-for="(v, i) in couponList" @click="toCoupon(i)" :key="i">
-				<view class="top">
-					<view class="left">
-						<view class="content">
-							<image :src="v.icon" class="icon" mode="widthFix" />
-							<view class="name">{{ v.name }}</view>
-						</view>
-						<view class="text" v-if="v.type == 1">天天可领</view>
-						<view class="text" v-else-if="v.type == 2">限时秒杀</view>
-					</view>
-					<view class="right">免费领取</view>
-				</view>
-				<view class="bottom"><image :src="v.bannerPic" class="banner-image" mode="widthFix" /></view>
-			</view>
-		</view>
-	</view>
+  <view class="uni-product-list">
+    <view class="uni-product" v-for="(product,index) in productList" :key="index" @click="toShop(index)">
+      <view class="image-view">
+        <image v-if="renderImage" class="uni-product-image" :src="product.image"></image>
+      </view>
+      <view class="uni-product-title">{{product.title}}</view>
+      <view class="uni-product-price">
+        <text class="uni-product-price-favour">￥{{product.originalPrice}}</text>
+        <text class="uni-product-price-original"> ￥{{product.favourPrice}}</text>
+        <text class="uni-product-tip">{{product.tip}}</text>
+      </view>
+    </view>
+  </view>
 </template>
 
 <script>
 export default {
-	data() {
-		return {
-			current: 0,
-			tabs: [
-				{
-					icon: '/static/all.png',
-					text: '全部',
-					tabId: 0,
-				},
-				{
-					icon: '/static/ele.png',
-					text: '饿了么',
-					tabId: 1,
-				},
-				{
-					icon: '/static/meituan.png',
-					text: '美团',
-					tabId: 2,
-				},
-				{
-					icon: '/static/tmall.png',
-					text: '天猫',
-					tabId: 5,
-				},
-				{
-					icon: '/static/jd.png',
-					text: '京东',
-					tabId: 3,
-				},
-				// {
-				// 	icon: '/static/vip.png',
-				// 	text: 'VIP会员',
-				// 	tabId: 4,
-				// }
-			],
-			couponList: [],
-			coupons: [
-				{
-					name: '饿了么红包',
-					icon: '/static/coupon/ele.png',
-					bannerPic: '/static/coupon/elm.jpg',
-					url: 'https://s.click.ele.me/quDa1ru',
-					type: 1,
-					tabId: 1,
-					minapp: {
-						appid: 'wxece3a9a4c82f58c9',
-						path: 'taoke/pages/shopping-guide/index?scene=kvnz0ru',
-					}
-				},
-				{
-					name: '美团外卖红包',
-					icon: '/static/coupon/meituan.png',
-					bannerPic: '/static/coupon/meituan.jpg',
-					url:'https://runion.meituan.com/url?key=cd23768d09c339d1641b2738df39aa67&url=https%3A%2F%2Fi.meituan.com%2Fawp%2Fhfe%2Fblock%2Fa945391288b790d558b7%2F78716%2Findex.html%3Fappkey%3Dcd23768d09c339d1641b2738df39aa67%3Ajuhe&sid=juhe',
-					type: 1,
-					tabId: 2,
-					minapp: {
-						appid: 'wxde8ac0a21135c07d',
-						path: '/index/pages/h5/h5?noshare=1&f_userId=0&f_openId=0&f_token=0&weburl=https%3A%2F%2Fact1.meituan.com%2Fclover%2Fpage%2Fadunioncps%2Fshare_coupon_new%3FutmSource%3D2055%26timestamp%3D1614432427%26utmMedium%3D401f09cc5f627afb3fcc9e46f2ade88d%26version%3D1.0%26showKa%3D1%26requestId%3D97ad06f1617a19415603d95b6cd233eb%26activity%3DOwMkGzn6oK'
-					}
-				},
+  data() {
+    return {
+      title: 'product-list',
+      productList: [],
+      renderImage: false
+    };
+  },
+  methods: {
+    loadData(action = 'add') {
+      const data = [
         {
-          name: '京东商城',
-          icon: '/static/coupon/jd.png',
-          bannerPic: '/static/coupon/elm.jpg',
-          url: 'https://c.mktdatatech.com/track.php?site_id=448253&aid=61&euid=&t=https%3A%2F%2Fwww.jd.com&dm_fid=16079',
-          tabId: 3,
+          image: '/static/shop/iphone12.jpg',
+          title: '京东商城好货优选',
+          originalPrice: 10099,
+          favourPrice: '****',
+          tip: '京东',
+          url: 'https://c.mktdatatech.com/track.php?site_id=448253&aid=61&euid=&t=https%3A%2F%2Fwww.jd.com&dm_fid=16052',
           minapp: {
             appid: 'wx91d27dbf599dff74',
-            path: 'pages/union/proxy/proxy?spreadUrl=https%3A%2F%2Funion-click.jd.com%2Fjdc%3Fe%3D16282%26p%3DAyIGZRprFDJWWA1FBCVbV0IUWVALHFRBEwQAQB1AWQkrDV5DcHoCGhl1ckpsBkMkaVpQHQ95KxkOIgBQHF0cCxcDZRtcFgsRN1cSUhQKEgBWK1sUMllpVCtaJQIVB1AfXR0HFAVTGFslAhoAZc%252FOvtqZkAdaGcyyt9H%252FtWslMhE3VRxYHAEiN1UbaxYyTGlUSFsWC0YPAHUBSEIVTg4fAHsCEw5RHl8cBho3VxpaFwA%253D&EA_PTAG=17078.27.503',
+            path: 'pages/union/proxy/proxy?spreadUrl=https%3A%2F%2Funion-click.jd.com%2Fjdc%3Fe%3D16282%26p%3DAyIGZRprFDJWWA1FBCVbV0IUWVALHFRBEwQAQB1AWQkrCW1adkw%252BbTh1eBFxEUUAYUpocFMdKxkOIgBQHF0cCxcDZRtcFgsRN1cSUhwKFg5WK1sUMllpVCtaJQIVB1AfUx0AEgZTHVIlAhoAZc%252FOvtqZkAdaGcyyt9H%252FtWslMhE3VRxYHAEiN1UbaxYyTGlUSFhGUBVUXHUBSEJKRxRDHnsCEw9XE1ITABE3VxpaFwA%253D&EA_PTAG=17078.27.503'
           }
         },
-			]
-		};
-	},
-	onLoad(e) {
-		//#ifdef H5
-		let tabId = this.$route.query.tabId ? parseInt(this.$route.query.tabId) : 0
-		//#endif
-		//#ifdef MP-WEIXIN
-		let tabId = e.tabId ? parseInt(e.tabId) : 0
-		//#endif
-		for(let i in this.tabs){
-			if(tabId == this.tabs[i].tabId){
-				this.current = parseInt(i)
-			}
-		}
-		this.changeTab(this.current)
-	},
-	onShareAppMessage(res) {
-		var messages = [{
-			title: '美团饿了么大额红包，每日可领！',
-			path: '/pages/index/index'
-		},{
-			title: '吃了这么多年外卖，你知道这个秘密吗？',
-			path: '/pages/index/index'
-		}];
-		return messages[Math.floor(Math.random()*messages.length)];
-	},
-	methods: {
-		changeTab(index) {
-			console.log('当前选中的项：' + index);
-			this.couponList = []
-			uni.showLoading({
-			    title: '获取优惠中'
-			});
-			if(index == 0){
-				this.couponList = this.coupons
-			}else{
-				for(let i in this.coupons){
-					if(this.coupons[i].tabId == this.tabs[index].tabId){
-						this.couponList.push(this.coupons[i])
-					}
-				}
-			}
-			//#ifdef H5
-			this.$nextTick(() => {
-				this.$refs.coupon.scrollTop= 0;
-			})
-			//#endif
-			setTimeout(() => {
-				uni.hideLoading()
-			}, 500)
-		},
-		toCoupon(i){
-			console.log(this.couponList[i])
-			//h5
-			//#ifdef H5
-			window.location.href = this.couponList[i].url
-			//#endif
-			//微信小程序
-			//#ifdef MP-WEIXIN
-			if(this.couponList[i].minapp){
-				wx.navigateToMiniProgram({
-				  appId: this.couponList[i].minapp.appid,
-				  path: this.couponList[i].minapp.path,
-				  success(res) {
-					// 打开成功
-				  }
-				})
-			}
-			//#endif
-		}
-	}
+
+      ];
+
+      if (action === 'refresh') {
+        this.productList = [];
+      }
+
+      data.forEach(item => {
+        this.productList.push(item);
+      });
+    },
+    toShop(i) {
+      //#ifdef H5
+      window.location.href = this.productList[i].url
+      //#endif
+
+      //#ifdef MP-WEIXIN
+      if(this.productList[i].minapp){
+        wx.navigateToMiniProgram({
+          appId: this.productList[i].minapp.appid,
+          path: this.productList[i].minapp.path,
+          success(res) {
+            // 打开成功
+          }
+        })
+      }
+      //#endif
+    },
+  },
+  onLoad() {
+    this.loadData();
+    setTimeout(() => {
+      this.renderImage = true;
+    }, 300);
+  },
+  // onPullDownRefresh() {
+  //   this.loadData('refresh');
+  //   setTimeout(() => {
+  //     uni.stopPullDownRefresh();
+  //   }, 2000);
+  // },
+  // onReachBottom() {
+  //   this.loadData();
+  // }
 };
 </script>
 
-<style lang="scss">
+<style>
+/* product */
 page {
-	background-color: #f8f8f8;
+  background: #F8F8F8;
 }
-.container {
-	font-size: 14px;
-	line-height: 24px;
-	position: relative;
-	.tab {
-		position: fixed;
-		top: var(--window-top);
-		left: 0;
-		z-index: 9999;
-	}
-	.coupon {
-		padding-top: 200rpx;
-		.item {
-			background-color: #ffffff;
-			margin: 30rpx;
-			border-radius: 10rpx;
-			padding: 0 30rpx 30rpx 30rpx;
-			.top {
-				height: 116rpx;
-				display: flex;
-				align-items: center;
-				justify-content: space-between;
-				.left {
-					height: 116rpx;
-					width: 400rpx;
-					display: flex;
-					align-items: center;
-					justify-content: space-between;
-					.content {
-						width: 100%;
-					}
-					.icon {
-						display: inline-block;
-						vertical-align: bottom;
-						width: 52rpx;
-						height: auto;
-					}
-					.name {
-						text-align: left;
-						display: inline-block;
-						vertical-align: bottom;
-						font-size: 34rpx;
-						color: #000;
-						line-height: 50rpx;
-						font-weight: bold;
-						margin-left: 15rpx;
-					}
-					.text {
-						width: 150rpx;
-						height: 38rpx;
-						line-height: 38rpx;
-						text-align: center;
-						font-size: 24rpx;
-						color: #61300e;
-						background: linear-gradient(90deg, #f9db8d, #f8d98a);
-						border-radius: 6rpx;
-					}
-				}
 
-				.right {
-					width: 170rpx;
-					height: 60rpx;
-					border-radius: 30rpx;
-					background: linear-gradient(90deg, #ec6f43, #ea4a36);
-					color: #fff;
-					font-size: 28rpx;
-					line-height: 60rpx;
-					text-align: center;
-				}
-			}
+view {
+  font-size: 28upx;
+}
 
-			.bottom {
-				height: auto;
-				width: 100%;
-				image {
-					display: block;
-					width: 100%;
-					height: auto;
-				}
-			}
-			.banner-image {
-				border-radius: 20rpx;
-			}
-		}
-	}
+.uni-product-list {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+.uni-product {
+  padding: 20upx;
+  display: flex;
+  flex-direction: column;
+}
+
+.image-view {
+  height: 330upx;
+  width: 330upx;
+  margin: 12upx 0;
+}
+
+.uni-product-image {
+  height: 330upx;
+  width: 330upx;
+}
+
+.uni-product-title {
+  width: 300upx;
+  word-break: break-all;
+  display: -webkit-box;
+  overflow: hidden;
+  line-height: 1.5;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.uni-product-price {
+  margin-top: 10upx;
+  font-size: 28upx;
+  line-height: 1.5;
+  position: relative;
+}
+
+.uni-product-price-original {
+  color: #e80080;
+}
+
+.uni-product-price-favour {
+  color: #888888;
+  text-decoration: line-through;
+  margin-left: 10upx;
+}
+
+.uni-product-tip {
+  position: absolute;
+  right: 10upx;
+  background-color: #ff3333;
+  color: #ffffff;
+  padding: 0 10upx;
+  border-radius: 5upx;
 }
 </style>

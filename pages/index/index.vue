@@ -27,8 +27,8 @@
 							<image :src="v.icon" class="icon" mode="widthFix" />
 							<view class="name">{{ v.name }}</view>
 						</view>
-						<view class="text" v-if="v.type == 1">每日可领</view>
-						<view class="text" v-else-if="v.type == 2">限时秒杀</view>
+<!--						<view class="text" v-if="v.type == 1">每日可领</view>-->
+<!--						<view class="text" v-else-if="v.type == 2">限时秒杀</view>-->
 					</view>
 					<view class="right">立即领取</view>
 				</view>
@@ -52,7 +52,7 @@ export default {
 			couponList: [],
 			coupons: [
 				{
-					name: '饿了么红包',
+					name: '饿了么每日红包',
 					icon: '/static/coupon/ele.png',
 					bannerPic: '/static/coupon/elm.jpg',
 					url: 'https://s.click.ele.me/quDa1ru',
@@ -63,7 +63,7 @@ export default {
 					}
 				},
 				{
-					name: '美团外卖红包',
+					name: '美团外卖每日红包',
 					icon: '/static/coupon/meituan.png',
 					bannerPic: '/static/coupon/meituan.jpg',
 					url:'https://c.mktdatatech.com/track.php?site_id=448253&aid=4882&euid=&t=http%3A%2F%2Ffxno-act.meituan.com&dm_fid=16052',
