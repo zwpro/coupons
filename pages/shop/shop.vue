@@ -29,13 +29,13 @@ export default {
         {
           image: '/static/shop/iphone12.jpg',
           title: '京东商城好货优选',
-          originalPrice: 10099,
-          favourPrice: '****',
+          originalPrice: 65,
+          favourPrice: '50',
           tip: '京东',
-          url: 'https://c.mktdatatech.com/track.php?site_id=448253&aid=61&euid=&t=https%3A%2F%2Fwww.jd.com&dm_fid=16052',
+          url: 'https://u.jd.com/iZU3WPM',
           minapp: {
             appid: 'wx91d27dbf599dff74',
-            path: 'pages/union/proxy/proxy?spreadUrl=https%3A%2F%2Funion-click.jd.com%2Fjdc%3Fe%3D16282%26p%3DAyIGZRprFDJWWA1FBCVbV0IUWVALHFRBEwQAQB1AWQkrCW1adkw%252BbTh1eBFxEUUAYUpocFMdKxkOIgBQHF0cCxcDZRtcFgsRN1cSUhwKFg5WK1sUMllpVCtaJQIVB1AfUx0AEgZTHVIlAhoAZc%252FOvtqZkAdaGcyyt9H%252FtWslMhE3VRxYHAEiN1UbaxYyTGlUSFhGUBVUXHUBSEJKRxRDHnsCEw9XE1ITABE3VxpaFwA%253D&EA_PTAG=17078.27.503'
+            path: 'pages/union/proxy/proxy?spreadUrl=https://u.jd.com/iFkCzWW'
           }
         },
 

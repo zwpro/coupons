@@ -22,7 +22,7 @@
           :style="{ color: fontObj.color, fontSize: fontObj.fontSize, fontWeight: fontObj.fontWeight }"
           >{{ text }}</view
         >
-        <view class="close" @tap="tipHidden">
+        <view class="close" @tap="neverDisplay">
           <image
             class="closeImg"
             v-if="closeColor"
@@ -99,8 +99,25 @@ export default {
     },
   },
   methods: {
+    neverDisplay: function () {
+      let that = this
+      uni.showModal({
+        title: '提示',
+        content: '关闭本提示?',
+        cancelText: '永久',
+        cancelColor: '#656464',
+        confirmText: '本次',
+        success: function (res) {
+          if (res.cancel) {
+            uni.setStorageSync("ganfanzu_collect_key_2021", "true");
+          }
+        },
+        complete: function(res) {
+          that.showTip = false;
+        }
+      });
+    },
     tipHidden: function () {
-      uni.setStorageSync("my_tips_2020", "true");
       this.showTip = false;
     },
     timeOut() {
@@ -112,7 +129,8 @@ export default {
       }, this.delay);
     },
     init() {
-      if (uni.getStorageSync("my_tips_2020")) return;
+      if (uni.getStorageSync("ganfanzu_collect_key_2021")) return;
+
       let rect = uni.getMenuButtonBoundingClientRect();
       let screenWidth = uni.getSystemInfoSync().screenWidth;
       this.boxTop = rect.bottom;

@@ -2,7 +2,7 @@
   <view class="container">
     <!--  关注  -->
     <!-- #ifdef MP-WEIXIN -->
-    <aTip isCustom="true" bgColor="#575555" borderR="5"></aTip>
+    <aTip isCustom="true" bgColor="#31313194" borderR="5"></aTip>
     <!-- #endif -->
 
     <!--  header  -->
