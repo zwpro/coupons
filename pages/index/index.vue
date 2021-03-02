@@ -14,7 +14,7 @@
         <image src="/static/banner/banner2.jpg" mode="widthFix" lazy-load @load="onoff='1'" />
       </view>
       <view class="header-button">
-        <image src="/static/xiaomai1_min.jpg" mode="widthFix" lazy-load @load="onoff='1'" @click="followNotice" />
+        <image src="/static/xiaomai_min.png" mode="widthFix" lazy-load @load="onoff='1'" @click="followNotice" />
       </view>
     </view>
 

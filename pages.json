@@ -9,6 +9,7 @@
 	},{
 	  "path": "pages/shop/shop",
 	  "style" : {
+		"navigationStyle": "custom",
 		"navigationBarTitleText": "干饭推荐"
 	  }
 	},{
