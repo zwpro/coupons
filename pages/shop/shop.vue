@@ -26,11 +26,6 @@
         <view class="bottom"><image :src="v.bannerPic" class="banner-image" mode="widthFix" lazy-load @load="onoff='1'" /></view>
       </view>
     </view>
-
-    <!--  关于  -->
-    <view>
-
-    </view>
   </view>
 </template>
 
