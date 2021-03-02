@@ -15,6 +15,8 @@
 </template>
 
 <script>
+import { getShareObj } from "@/common/share.js";
+
 export default {
   data() {
     return {
@@ -22,6 +24,9 @@ export default {
       productList: [],
       renderImage: false
     };
+  },
+  onShareAppMessage(res) {
+    return getShareObj()
   },
   methods: {
     loadData(action = 'add') {

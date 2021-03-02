@@ -45,6 +45,8 @@
 
 <script>
 import aTip from "@/components/a_tip/aTip";
+import { getShareObj } from "@/common/share.js";
+
 export default {
 	data() {
 		return {
@@ -83,14 +85,7 @@ export default {
 		this.changeTab()
 	},
 	onShareAppMessage(res) {
-		let messages = [{
-			title: '干饭人,干饭魂,干饭人吃饭得用盆!',
-			path: '/pages/index/index'
-		},{
-			title: '干饭人胃口大，一张小嘴吃天下!',
-			path: '/pages/index/index'
-		}];
-		return messages[Math.floor(Math.random()*messages.length)];
+    return getShareObj()
 	},
 	methods: {
 		changeTab() {

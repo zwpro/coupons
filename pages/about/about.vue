@@ -5,10 +5,13 @@
     <view class="header-container">
       <view class="header">
         <view class="logo-img">
-          <image src="/static/logo.jpg" mode="widthFix" lazy-load @load="onoff='1'" />
+          <image src="/static/logo.jpg" mode="widthFix" lazy-load @load="onoff='1'" :style="{opacity:logoOpacity}"/>
         </view>
       </view>
-      <view class="title">干饭组 v1.0.0</view>
+      <view class="title">
+        <p>干饭组</p>
+        <p>Version1.0.0</p>
+      </view>
     </view>
 
     <view class="about">
@@ -23,6 +26,24 @@
 	</view>
 </template>
 
+<script>
+import { getShareObj } from "@/common/share.js";
+
+export default {
+  data() {
+    return {
+      logoOpacity: 0
+    };
+  },
+  onReady(e) {
+    this.logoOpacity = 1
+  },
+  onShareAppMessage(res) {
+    return getShareObj()
+  },
+};
+</script>
+
 <style lang="scss">
 page {
 	background-color: #fff;
@@ -36,11 +57,12 @@ page {
       text-align: center;
       .logo-img {
         height: 68px;
-        padding-top: 230rpx;
+        padding-top: 200rpx;
         image {
           width: 68px;
           height: 68px;
           border-radius: 50%;
+          transition: all 0.5s linear;
         }
       }
     }
