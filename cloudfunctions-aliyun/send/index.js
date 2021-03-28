@@ -5,8 +5,8 @@ function getFormatDate(ms) {
     let date = new Date();
 	date.setTime(date.getTime() + ms);
     const year = date.getFullYear();
-    const month = date.getMonth() + 1;
-    const strDate = date.getDate();
+    let month = date.getMonth() + 1;
+    let strDate = date.getDate();
     if (month >= 1 && month <= 9) {
         month = '0' + month;
     }
